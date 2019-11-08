@@ -1,39 +1,37 @@
-import * as Storage from '../utils/StoreData';
-import moment from "moment";
-import { apisAreAvailable } from 'expo';
+import {POST_FETCHING, POST_SUCCESS, POST_FAIL, POST_APPEND} from "../constants/ActionTypes";
 
-export default function (state = [], action) {
+const initState = {
+  isFetching: false,
+  isError: false,
+  posts: [],
+};
+
+export default function (state = initState, action) {
   if ( !state ) {
-    state = [];
+    state = initState;
   }
   switch (action.type) {
-    case "STORE_PLANTS":
-      Storage.storeData(state);
-      return state;
-    case 'SET_PLANTS':
-      return action.plants;
-    case 'GET_PLANTS':
-      return state;
-    case 'ADD_PLANT':
-      action.newPlant.key = (1 + state.length).toString();
-      return [...state,
-        action.newPlant];
-    case 'DELETE_PLANT':
-        return state.filter(( plant ) => {
-          return plant.key !== action.key;
+    case POST_FETCHING:
+      return Object.assign( {}, state, {
+        isFetching: true,
       });
-    case 'WATER_PLANT':  
-      return state.map((plant) => {
-          if (plant.key === action.plant.key) {
-            plant.nextWaterDate = moment().add(plant.intervalDays, "days").format();
-          }
-          return plant;
-        });
-    case 'SORT_PLANTS':
-        state = state.sort((a,b) => {
-          return moment(a.nextWaterDate).diff(moment(b.nextWaterDate), 'days');
-        });
-      return state;
+    case POST_SUCCESS:
+      return Object.assign( {}, state, {
+        isFetching: false,
+        isError: false,
+      });
+    case POST_FAIL:
+      return Object.assign( {}, state, {
+        isFetching: false,
+        isError: true
+      });
+    case POST_APPEND:
+      return Object.assign( {}, {
+        posts: [
+            ...state.posts,
+            ...action.posts
+        ]
+      });
     default:
       return state;
   }

@@ -1,17 +1,13 @@
 import React from 'react';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer} from 'react-navigation';
 import PlantListContainer from '../screens/PlantList';
-import AddPlantContainer from '../screens/AddPlant';
 
 
 
-const PlantListStack = createStackNavigator(
+const YouToolStack = createStackNavigator(
   {
     PlantList: {
       screen: PlantListContainer,
-    },
-    AddPlant: {
-      screen: AddPlantContainer,
     },
   },
   {
@@ -28,6 +24,6 @@ const PlantListStack = createStackNavigator(
   }
 );
 
-let PlantListStackContainer = createAppContainer(PlantListStack);
-export default PlantListStackContainer;
+let YouToolStackContainer = createAppContainer(YouToolStack);
+export default YouToolStackContainer;
 

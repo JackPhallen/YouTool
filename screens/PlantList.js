@@ -2,10 +2,7 @@ import React from 'react';
 import {View, Text, Button, StyleSheet, FlatList, TouchableOpacity, Alert,  Image} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import moment from "moment";
 
-import * as Storage from '../utils/StoreData'
-import * as Actions from '../actions/plants.actions';
 
 class PlantList extends React.Component {
   static navigationOptions = ({ navigation }) => {
