@@ -1,9 +1,13 @@
 import {combineReducers} from 'redux';
+import tagReducer from './tags.reducer';
+import postReducer from './posts.reducer';
+import fieldsReducer from './fields.reducer';
 
-import postReducer from '../reducers/posts.reducer';
 
 const rootReducer = combineReducers({
-  posts: postReducer
+  posts: postReducer,
+  tags: tagReducer,
+  fields: fieldsReducer
 });
 
 export default rootReducer;

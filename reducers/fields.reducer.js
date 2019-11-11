@@ -1,14 +1,14 @@
 import {
-    POSTS_FETCHING,
-    POSTS_SUCCESS,
-    POSTS_FAIL,
-    POSTS_SET,
+    FIELDS_FETCHING,
+    FIELDS_SUCCESS,
+    FIELDS_FAIL,
+    FIELDS_SET,
 } from "../constants/ActionTypes";
 
 const initState = {
     isFetching: false,
     isError: false,
-    posts: [],
+    fields: [],
 };
 
 export default function (state = initState, action) {
@@ -16,23 +16,23 @@ export default function (state = initState, action) {
         state = initState;
     }
     switch (action.type) {
-        case POSTS_FETCHING:
+        case FIELDS_FETCHING:
             return Object.assign({}, state, {
                 isFetching: true,
             });
-        case POSTS_SUCCESS:
+        case FIELDS_SUCCESS:
             return Object.assign({}, state, {
                 isFetching: false,
                 isError: false,
             });
-        case POSTS_FAIL:
+        case FIELDS_FAIL:
             return Object.assign({}, state, {
                 isFetching: false,
                 isError: true
             });
-        case POSTS_SET:
+        case FIELDS_SET:
             return Object.assign({}, {
-                posts: action.posts
+                fields: action.fields
             });
         default:
             return state;
