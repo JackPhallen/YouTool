@@ -17,16 +17,21 @@ export default class SearchScreen extends React.Component {
         example: user inputs "I have a cow a pig and a dog" -> selectedTags = ['cow', 'pig']
      */
 
+
     render() {
         return (
             <View style={styles.main}>
                 <TextInput
-                        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                        style={{ height: 25, borderColor: 'gray', borderWidth: 3 }}
                         onChangeText={userInput => this.setState({ userInput })}
                         value={this.state.userInput}
+                        placeholder="Search"
                       />
                 <Text> { this.state.selectedTags.toString() } </Text>
+                {/*Test displays that user input is being recorded*/}
+                <Text> {this.state.userInput} </Text>
             </View>
+
         )
     }
 }
