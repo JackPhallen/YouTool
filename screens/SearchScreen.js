@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 
 export default class SearchScreen extends React.Component {
 
@@ -20,6 +20,11 @@ export default class SearchScreen extends React.Component {
     render() {
         return (
             <View style={styles.main}>
+                <TextInput
+                        style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                        onChangeText={userInput => this.setState({ userInput })}
+                        value={this.state.userInput}
+                      />
                 <Text> { this.state.selectedTags.toString() } </Text>
             </View>
         )
